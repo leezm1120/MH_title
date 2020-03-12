@@ -1,0 +1,48 @@
+<!--index.wxml-->
+<!-- <view class="page__bd" style='background-color: #0000ff;'> -->
+<view class="weui-search-bar">
+  <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+      <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+        <icon type="clear" size="14"></icon>
+      </view>
+    </view>
+    <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+      <icon class="weui-icon-search" type="search" size="14"></icon>
+      <view class="weui-search-bar__text">搜索</view>
+    </label>
+  </view>
+  <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+</view>
+
+<view>
+  <scroll-view scroll-y style="height:{{screenHeight}}px;">
+    <block wx:for="{{list}}" wx:key="id">
+      <view class="kind-list__item">
+        <view id="{{item.id}}" name="{{item.name}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" bindtap="kindToggle">
+          <view class="weui-flex__item" bindtap="btItem">{{item.name}}</view>
+          <!-- <view class="{{item.isFavor?'is_favor':'not_favor'}}" catchtap="btFavor" id="{{item.suoyin}}" name="{{item.name}}">❤</view> -->
+          <image class="kind-list__img" catchtap='btFavor' wx:if="{{item.isFavor}}" id="{{item.suoyin}}" src="../../image/favor_star_highlight.png"></image>
+          <image class="kind-list__img" wx:else catchtap='btFavor' id="{{item.suoyin}}" src="../../image/favor_star_normal.png"></image>
+        </view>
+        <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+          <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+
+            <block wx:for="{{item.title}}" wx:for-item="page" wx:key="*this">
+              <navigator url="{{page}}/{{page}}" class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">{{page}}</view>
+                <!-- <view class="weui-cell__ft weui-cell__ft_in-access"></view> -->
+              </navigator>
+              <navigator url="{{page}}/{{page}}" class="desc-cell weui-cell_access">
+                <view class="weui-cell__bd">{{item.desc[index]}}</view>
+              </navigator>
+            </block>
+
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+</view>

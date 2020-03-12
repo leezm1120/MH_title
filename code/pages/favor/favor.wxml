@@ -1,0 +1,29 @@
+<view>
+  <scroll-view scroll-y style="height:{{screenHeight}}px;">
+    <block wx:for="{{list}}" wx:key="id">
+      <view class="kind-list__item">
+        <view id="{{item.id}}" name="{{item.name}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" bindtap="kindToggle">
+          <view class="weui-flex__item" bindtap="btItem">{{item.name}}</view>
+          <!-- <view class="{{item.isFavor?'is_favor':'not_favor'}}" catchtap="btFavor" id="{{item.suoyin}}" name="{{item.name}}">❤</view> -->
+          <image class="kind-list__img" catchtap='btFavor' wx:if="{{item.isFavor}}" id="{{item.suoyin}}" src="../../image/favor_star_highlight.png"></image>
+          <image class="kind-list__img" wx:else catchtap='btFavor' id="{{item.suoyin}}" src="../../image/favor_star_normal.png"></image>
+        </view>
+        <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+          <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+
+            <block wx:for="{{item.title}}" wx:for-item="page" wx:key="*this">
+              <navigator url="{{page}}/{{page}}" class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">{{page}}</view>
+                <!-- <view class="weui-cell__ft weui-cell__ft_in-access"></view> -->
+              </navigator>
+              <navigator url="{{page}}/{{page}}" class="desc-cell weui-cell_access">
+                <view class="weui-cell__bd">{{item.desc[index]}}</view>
+              </navigator>
+            </block>
+
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+</view>

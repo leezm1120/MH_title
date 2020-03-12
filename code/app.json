@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/screen/screen",
+    "pages/favor/favor",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#F6F7F9",
+    "navigationBarTitleText": "玛赫的季节头衔查询器",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#EFEFF4"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "image/tabbar_home_normal.png",
+        "selectedIconPath": "image/tabbar_home_highlight.png"
+      },
+      {
+        "pagePath": "pages/screen/screen",
+        "text": "筛选",
+        "iconPath": "image/tabbar_select_normal.png",
+        "selectedIconPath": "image/tabbar_select_highlight.png"
+      },
+      {
+        "pagePath": "pages/favor/favor",
+        "text": "收藏",
+        "iconPath": "image/tabbar_favor_normal.png",
+        "selectedIconPath": "image/tabbar_favor_highlight.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
